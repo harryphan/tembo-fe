@@ -1,0 +1,18 @@
+version: "3.9"
+
+networks:
+  tembo-net:
+    driver: bridge
+    name: tembo-net
+
+services:
+  tembo-fe:
+    build: .
+    hostname: tembo-fe
+    ports:
+      - "3000:3000"
+    networks:
+      - tembo-net
+    volumes:
+      - ./:/app
+    command: "yarn start"
